@@ -18,7 +18,7 @@ jobs:
         with:
           template: https://github.com/cjolowicz/cookiecutter-hypermodern-python
           cookiecutterValues: '{
-            "project_name": "integration-test",
+            "project_name": "integration-test"
           }'
       - name: Check outputs
         run: |
