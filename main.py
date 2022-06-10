@@ -25,7 +25,7 @@ def get_inputs() -> Dict[str, Any]:
 
     # parse the cookiecutterValues into a dict
     try:
-        actions_toolkit.debug(f"cookiecutterValues Json String: {parsed_inputs["cookiecutterValues"]}")
+        actions_toolkit.debug(f"cookiecutterValues Json String: {parsed_inputs['cookiecutterValues']}")
         parsed_inputs["cookiecutterValues"] = json.loads(parsed_inputs["cookiecutterValues"])
     except json.decoder.JSONDecodeError as jsonerror:
         actions_toolkit.set_failed(f"Json error in cookiecutterValues {jsonerror}")
