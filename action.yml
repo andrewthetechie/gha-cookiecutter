@@ -4,7 +4,8 @@ author: "Andrew Herrington"
 inputs:
   cookiecutterValues:
     description: "Json blob to pass to the cookiecutter template. Any values not filled in will be set to template's default"
-    required: true
+    required: false
+    default: '{}'
   template:
     description: "A directory containing a project template directory (or zip file), or a URL to a git repository."
     required: true

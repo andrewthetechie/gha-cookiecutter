@@ -26,12 +26,11 @@ jobs:
       with:
         # can be a link to a git repo or a local path
         template: https://github.com/cjolowicz/cookiecutter-hypermodern-python
-        cookiecutterValues:
-         {
-           foo: "bar",
-           baz: "boo",
-           num: 2
-         }
+        cookiecutterValues: '{
+           "foo": "bar",
+           "baz": "boo",
+           "num": 2
+         }'
 ```
 
 Or to use a cookiecutter in a private repo, use a checkout with a token that has access to that repo
@@ -52,11 +51,11 @@ jobs:
       with:
         # path to what you checked out
         template: ./yourprivatecookiecutter
-        cookiecutterValues:' {
-           foo: "bar",
-           baz: "boo",
-           num: 2
-         }
+        cookiecutterValues: '{
+           "foo": "bar",
+           "baz": "boo",
+           "num": 2
+         }'
 ```
 <!-- action-docs-inputs -->
 
