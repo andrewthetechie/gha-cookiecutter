@@ -36,7 +36,7 @@ jobs:
         with:
           images: andrewthetechie/gha-cookiecutter
           tags: |
-            type=raw,value=${{ input.version }}
+            type=raw,value=${{ inputs.version }}
             # minimal (short sha)
             type=sha,prefix=
             # full length sha
@@ -63,7 +63,7 @@ jobs:
           output_file: Dockerfile
           strict: true
           variables: |
-            image_version=${{ input.version }}
+            image_version=${{ inputs.version }}
       - name: Commit Dockerfile changes
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -72,7 +72,7 @@ jobs:
       - name: Tag Repo
         uses: richardsimko/update-tag@v1
         with:
-          tag_name: ${{ input.version }}
+          tag_name: ${{ inputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
@@ -81,8 +81,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
-          tag_name:  ${{ input.version }}
-          release_name:  ${{ input.version }}
-          body:  ${{ input.releaseNotes }}
+          tag_name:  ${{ inputs.version }}
+          release_name:  ${{ inputs.version }}
+          body:  ${{ inputs.releaseNotes }}
           draft: false
-          prerelease: ${{ input.prerelease }}
+          prerelease: ${{ inputs.prerelease }}
