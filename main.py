@@ -71,7 +71,9 @@ def main():
     except Exception as exc:
         actions_toolkit.set_failed(exc)
 
+    actions_toolkit.debug(os.listdir(inputs["output_dir"]))
     actions_toolkit.set_output("outputDir", output_dir)
+    actions_toolkit.set_output("outputDirContents", json.dumps(os.listdir(output_dir)))
 
 
 if __name__ == "__main__":
