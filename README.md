@@ -68,7 +68,7 @@ jobs:
 
 | parameter | description | required | default |
 | - | - | - | - |
-| cookiecutterValues | Json blob to pass to the cookiecutter template. Any values not filled in will be set to template's default | `true` |  |
+| cookiecutterValues | Json blob to pass to the cookiecutter template. Any values not filled in will be set to template's default | `false` | {} |
 | template | A directory containing a project template directory (or zip file), or a URL to a git repository. | `true` |  |
 | templateCheckout | The branch, tag or commit ID to checkout after clone. | `false` |  |
 | templateDirectory | Relative path to a cookiecutter template in a repository. | `false` |  |
