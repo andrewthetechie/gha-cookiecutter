@@ -1,13 +1,44 @@
-name: "Python Container Action Template"
-description: "Get started with Python Container actions"
-author: "Jacob Tomlinson"
+name: "Cookiecutter in Github Actions"
+description: "Generate from a cookiecutter template as part of your github workflow"
+author: "Andrew Herrington"
 inputs:
-  myInput:
-    description: "Input to use"
-    default: "world"
+  cookiecutterValues:
+    description: "Json blob to pass to the cookiecutter template. Any values not filled in will be set to template's default"
+    required: true
+  template:
+    description: "A directory containing a project template directory (or zip file), or a URL to a git repository."
+    required: true
+  templateCheckout:
+    description: "The branch, tag or commit ID to checkout after clone."
+    required: false
+  templateDirectory:
+    description: "Relative path to a cookiecutter template in a repository."
+    required: false
+  outputDir:
+    description: "Where to output the generated project dir into."
+    default: "."
+    required: false
+  overwrite:
+    description: "Overwrite files if they already exist in outputDir if true"
+    required: false
+    default: "false"
+  skip:
+    description: "Skip files if they already exist in outputDir if true"
+    required: false
+    default: "false"
+  zipPassword:
+    description: "If your template zip is password protected, put your password here"
+    required: false
+  acceptHooks:
+    description: "Accept pre and post hooks if set to true."
+    required: false
+    default: "true"
 outputs:
-  myOutput:
-    description: "Output from the action"
+  outputDir:
+    description: "Directory the cookiecutter outputted to"
 runs:
   using: "docker"
   image: "Dockerfile"
+branding:
+  icon: 'copy'
+  color: 'blue'
