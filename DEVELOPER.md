@@ -13,3 +13,7 @@ make build
 Use the release job https://github.com/andrewthetechie/gha-cookiecutter/actions/workflows/release.yml
 
 Specify an incremented version, job will fail if you repeat a release.
+
+Fill in any release notes
+
+After the job runs, edit the Release in the github ui and check the box to release it to Github Actions Marketplace and click Update Release.
