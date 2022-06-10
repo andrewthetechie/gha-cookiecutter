@@ -24,7 +24,7 @@ jobs:
         id: check_files
         uses: andstor/file-existence-action@v1.1.0
         with:
-          files: ${{ steps.selftest.outputs.outputDir }}
+          files: "${{ steps.selftest.outputs.outputDir }}"
       - name: Check check_files
         run: |
           test "${{ steps.check_files.outputs.files_exists }}" == "true"
