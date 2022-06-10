@@ -1,6 +1,6 @@
 name: Release
 on:
-  workflow-dispatch:
+  workflow_dispatch:
     inputs:
       version:
         description: "Version to release, like v1.0.0. Must increment current versions"
