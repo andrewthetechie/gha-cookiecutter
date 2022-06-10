@@ -25,6 +25,9 @@ jobs:
         uses: andstor/file-existence-action@v1.1.0
         with:
           files: "/github/workspace/integration-test"
+      - name: Check ls
+        run: |
+          ls
       - name: Check check_files
         run: |
           test "${{ steps.check_files.outputs.files_exists }}" == "true"
