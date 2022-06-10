@@ -5,6 +5,12 @@
 [![Actions Status](https://github.com/andrewthetechie/gha-cookiecutter/workflows/Integration%20Test/badge.svg)](https://github.com/andrewthetechie/gha-cookiecutter/actions)
 
 <!-- action-docs-description -->
+## Description
+
+Generate from a cookiecutter template as part of your github workflow
+
+
+<!-- action-docs-description -->
 
 ## Usage
 
@@ -58,7 +64,39 @@ jobs:
          }'
 ```
 <!-- action-docs-inputs -->
+## Inputs
+
+| parameter | description | required | default |
+| - | - | - | - |
+| cookiecutterValues | Json blob to pass to the cookiecutter template. Any values not filled in will be set to template's default | `true` |  |
+| template | A directory containing a project template directory (or zip file), or a URL to a git repository. | `true` |  |
+| templateCheckout | The branch, tag or commit ID to checkout after clone. | `false` |  |
+| templateDirectory | Relative path to a cookiecutter template in a repository. | `false` |  |
+| outputDir | Where to output the generated project dir into. | `false` | . |
+| overwrite | Overwrite files if they already exist in outputDir if true | `false` | false |
+| skip | Skip files if they already exist in outputDir if true | `false` | false |
+| zipPassword | If your template zip is password protected, put your password here | `false` |  |
+| acceptHooks | Accept pre and post hooks if set to true. | `false` | true |
+
+
+
+<!-- action-docs-inputs -->
 
 <!-- action-docs-outputs -->
+## Outputs
+
+| parameter | description |
+| - | - |
+| outputDir | Directory the cookiecutter outputted to |
+
+
+
+<!-- action-docs-outputs -->
+
+<!-- action-docs-runs -->
+## Runs
+
+This action is a `docker` action.
+
 
 <!-- action-docs-runs -->
