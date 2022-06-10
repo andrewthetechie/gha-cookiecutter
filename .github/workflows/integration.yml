@@ -33,4 +33,4 @@ jobs:
           test "${{ steps.check_files.outputs.files_exists }}" == "true"
       - name: Check outputs
         run: |
-          test "${{ steps.selftest.outputs.outputDir }}" == "/github/workspace/integration-test"
+          test "${{ steps.test-action.outputs.outputDir }}" == "/github/workspace/integration-test"
