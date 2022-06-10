@@ -55,12 +55,6 @@ jobs:
           # https://github.com/docker/build-push-action/blob/master/docs/advanced/cache.md#registry-cache
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Tag Repo
-        uses: richardsimko/update-tag@v1
-        with:
-          tag_name: ${{ input.version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Update Action Dockerfile with Jinja
         id: update_action-dockerfile
         uses: cuchi/jinja2-action@v1.2.0
@@ -75,7 +69,7 @@ jobs:
         with:
           commit_message: "ci: update actions dockerfile for release"
           file_pattern: Dockerfile
-      - name: Update Repo Tag After Dockerfile update
+      - name: Tag Repo
         uses: richardsimko/update-tag@v1
         with:
           tag_name: ${{ input.version }}
