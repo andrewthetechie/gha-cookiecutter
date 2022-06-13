@@ -43,6 +43,11 @@ def get_inputs() -> Dict[str, Any]:
         actions_toolkit.set_failed(f"Json error in cookiecutterValues {jsonerror}")
     except Exception as exc:  # this should be tigther
         actions_toolkit.set_failed(exc)
+
+    try:
+        actions_toolkit.debug(f"Listing template directory {os.listdir(parsed_inputs['template'])}")
+    except Exception as exc:
+        actions_toolkit.debug(f"Not listing template directory due to {exc}")
     return parsed_inputs
 
 
