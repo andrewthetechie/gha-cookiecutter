@@ -9,6 +9,19 @@ from actions_toolkit import core as actions_toolkit
 from cookiecutter.main import cookiecutter
 
 
+INPUT_VALUES = {
+    "acceptHooks": {"default": "true", "required": False},
+    "cookiecutterValues": {"default": "{}", "required": False},
+    "outputDir": {"default": ".", "required": False},
+    "overwrite": {"default": "false", "required": False},
+    "skip": {"default": "false", "required": False},
+    "template": {"required": True},
+    "templateCheckout": {"required": False},
+    "templateDirectory": {"required": False},
+    "zipPassword": {"required": False},
+}
+
+
 def get_inputs() -> Dict[str, Any]:
     """Get inputs from our workflow, valudate them, and return as a dict
 
@@ -17,9 +30,8 @@ def get_inputs() -> Dict[str, Any]:
         Dict[str, Any]: [description]
     """
     parsed_inputs = dict()
-    with open("action.yml") as fh:
-        action_config = yaml.safe_load(fh)
-    for input_name, input_config in action_config["inputs"].items():
+
+    for input_name, input_config in INPUT_VALUES.items():
         this_input_value = actions_toolkit.get_input(input_name, required=input_config["required"])
         parsed_inputs[input_name] = this_input_value if this_input_value != "" else None
 
