@@ -86,6 +86,7 @@ def main():
     try:
         output_dir = cookiecutter(**set_inputs)
     except Exception as exc:
+        actions_toolkit.debug(f"Encountered exception while running cookiecutter. {exc.__class__}: {str(exc)}")
         actions_toolkit.set_failed(exc)
 
     actions_toolkit.debug(os.listdir(inputs["output_dir"]))
