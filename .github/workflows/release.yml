@@ -68,7 +68,7 @@ jobs:
       - name: Commit Dockerfile changes
         uses: swinton/commit@v2.0.0
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.THIS_PAT }}
         with:
           commit-message: "ci: update actions dockerfile for release"
           files: |
@@ -78,7 +78,7 @@ jobs:
         with:
           tag_name: ${{ inputs.version }}
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
