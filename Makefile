@@ -19,5 +19,8 @@ install-requirements:  ## Pip installs our requirements
 setup-pre-commit:
 	pre-commit install
 
-build:
+build: ## build a docker image locally
 	docker build --platform linux/amd64 -t gha-cookiecutter -f Docker/Dockerfile .
+
+generate-inputs: ## Generate a dict of inputs from actions.yml into repo_manager/utils/__init__.py
+	./.github/scripts/replace_inputs.sh

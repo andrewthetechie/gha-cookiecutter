@@ -9,17 +9,40 @@ from actions_toolkit import core as actions_toolkit
 from cookiecutter.main import cookiecutter
 
 
-INPUT_VALUES = {
-    "acceptHooks": {"default": "true", "required": False},
-    "cookiecutterValues": {"default": "{}", "required": False},
-    "outputDir": {"default": ".", "required": False},
-    "overwrite": {"default": "false", "required": False},
-    "skip": {"default": "false", "required": False},
-    "template": {"required": True},
-    "templateCheckout": {"required": False},
-    "templateDirectory": {"required": False},
-    "zipPassword": {"required": False},
+###START_INPUT_AUTOMATION###
+INPUTS = {
+    "cookiecutterValues": {
+        "description": "Json blob to pass to the cookiecutter template. Any values not filled in will be set to template's default",
+        "required": False,
+        "default": "{}",
+    },
+    "template": {
+        "description": "A directory containing a project template directory (or zip file), or a URL to a git repository.",
+        "required": True,
+    },
+    "templateCheckout": {"description": "The branch, tag or commit ID to checkout after clone.", "required": False},
+    "templateDirectory": {
+        "description": "Relative path to a cookiecutter template in a repository.",
+        "required": False,
+    },
+    "outputDir": {"description": "Where to output the generated project dir into.", "default": ".", "required": False},
+    "overwrite": {
+        "description": "Overwrite files if they already exist in outputDir if true",
+        "required": False,
+        "default": "false",
+    },
+    "skip": {
+        "description": "Skip files if they already exist in outputDir if true",
+        "required": False,
+        "default": "false",
+    },
+    "zipPassword": {
+        "description": "If your template zip is password protected, put your password here",
+        "required": False,
+    },
+    "acceptHooks": {"description": "Accept pre and post hooks if set to true.", "required": False, "default": "true"},
 }
+###END_INPUT_AUTOMATION###
 
 
 def get_inputs() -> Dict[str, Any]:
@@ -31,7 +54,7 @@ def get_inputs() -> Dict[str, Any]:
     """
     parsed_inputs = dict()
 
-    for input_name, input_config in INPUT_VALUES.items():
+    for input_name, input_config in INPUTS.items():
         this_input_value = actions_toolkit.get_input(input_name, required=input_config["required"])
         parsed_inputs[input_name] = this_input_value if this_input_value != "" else None
 
