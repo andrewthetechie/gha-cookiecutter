@@ -2,9 +2,7 @@ import json
 import os
 from typing import Any
 from typing import Dict
-from typing import List
 
-import yaml
 from actions_toolkit import core as actions_toolkit
 from cookiecutter.main import cookiecutter
 
