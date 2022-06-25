@@ -13,7 +13,7 @@ pyenv-setup:
 	pyenv local gha-cookiecutter
 
 install-requirements:  ## Pip installs our requirements
-	pip install -r Docker/rootfs/requirements.txt
+	pip install -r Docker/builder/rootfs/requirements.txt
 	pip install -r requirements-dev.txt
 
 setup-pre-commit:
