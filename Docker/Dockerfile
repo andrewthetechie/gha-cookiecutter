@@ -1,6 +1,6 @@
 # Distroless runs python 3.9.2
 FROM python:3.9.2-slim as builder
-ADD Docker/rootfs /
+ADD Docker/builder/rootfs /
 ADD main.py /app/main.py
 ADD action.yml /app/action.yml
 
