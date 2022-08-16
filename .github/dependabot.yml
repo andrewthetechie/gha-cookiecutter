@@ -1,7 +1,7 @@
 version: 2
 updates:
   - package-ecosystem: "pip"
-    directory: "/Docker/"
+    directory: "/Docker/builder/rootfs/"
     schedule:
       interval: "daily"
   - package-ecosystem: "pip"
