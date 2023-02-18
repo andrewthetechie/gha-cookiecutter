@@ -1,5 +1,5 @@
 # Distroless runs python 3.9.2
-FROM python:3.11-slim-bullseye as builder
+FROM python:3.11-slim-bullseye as python-base
 ADD Docker/builder/rootfs /
 ADD main.py /app/main.py
 ADD action.yml /app/action.yml
@@ -13,30 +13,6 @@ RUN cd /tmp && \
     --no-pre-depends git | grep -v libc | grep "^\w") libcurl3-gnutls && \
     mkdir /dpkg && \
     for deb in *.deb; do dpkg --extract $deb /dpkg || exit 10; done
-
-FROM python:3.11-slim-bullseye as python-base
-
-# Update the base image
-RUN apt-get update && apt-get upgrade -y
-
-# Setup a non-root user
-ARG NONROOT_USER="op"
-ARG NONROOT_GROUP="op"
-
-RUN groupadd ${NONROOT_GROUP}
-RUN useradd -m ${NONROOT_USER} -g ${NONROOT_GROUP}
-
-USER ${NONROOT_USER}
-ENV PATH="/home/${NONROOT_USER}/.local/bin:${PATH}"
-WORKDIR /home/${NONROOT_USER}
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONFAULTHANDLER 1
-
-# upgrade pip and virtualenv
-RUN --mount=type=cache,uid=1000,gid=1000,target=/home/op/.cache/pip pip install --upgrade pip && \
-    pip install --no-warn-script-location --upgrade virtualenv
 
 # use distroless/cc as the base for our final image
 # lots of python depends on glibc
@@ -56,26 +32,21 @@ COPY --from=python-base /lib/*-linux-gnu/libz.so.1 /lib/libs/
 COPY --from=python-base /usr/lib/*-linux-gnu/libffi* /lib/libs/
 COPY --from=python-base /lib/*-linux-gnu/libexpat* /lib/libs/
 
-# Add some system utils
-COPY --from=python-base /bin/echo /bin/echo
-COPY --from=python-base /bin/rm /bin/rm
-COPY --from=python-base /bin/sh /bin/sh
-
 # Copy over the app
-COPY --from=builder /app /app
-COPY --from=builder /dpkg /
+COPY --from=python-base /app /app
+COPY --from=python-base /dpkg /
 WORKDIR /app
-ENV PYTHONPATH /app
 
-# non root user stuff
-RUN echo "op:x:1000:op" >> /etc/group
-RUN echo "op:x:1001:" >> /etc/group
-RUN echo "op:x:1000:1001::/home/op:" >> /etc/passwd
-
-# Remove shell utils and pip
-RUN rm /bin/sh /bin/echo /bin/rm
-
-# default to running as non-root, uid=1000
-USER op
+# Add /lib/libs to our path
+ENV LD_LIBRARY_PATH="/lib/libs:${LD_LIBRARY_PATH}" \
+# Add the app path to our path
+    PATH="/app/bin:${PATH}" \
+# Add the app path to your python path
+    PYTHONPATH="/app:${PYTHONPATH}" \
+# standardise on locale, don't generate .pyc, enable tracebacks on seg faults
+    LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONFAULTHANDLER=1
 
 CMD ["python", "/app/main.py"]
