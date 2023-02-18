@@ -1,7 +1,6 @@
 import json
 import os
 from typing import Any
-from typing import Dict
 
 from actions_toolkit import core as actions_toolkit
 from cookiecutter.main import cookiecutter
@@ -43,7 +42,7 @@ INPUTS = {
 ###END_INPUT_AUTOMATION###
 
 
-def get_inputs() -> Dict[str, Any]:
+def get_inputs() -> dict[str, Any]:
     """Get inputs from our workflow, valudate them, and return as a dict
 
     Reads inputs from actions.yaml. Non required inputs that are not set are returned as None
