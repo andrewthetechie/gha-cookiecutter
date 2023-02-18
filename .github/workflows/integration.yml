@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checkout
+      - name: Copy in Dockerfile
+        run: cp Docker/Dockerfile Dockerfile
       - name: Test action
         id: test-action
         # test with the local checkout of the action
