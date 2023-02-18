@@ -14,13 +14,13 @@ jobs:
         with:
           all_but_latest: true
           access_token: ${{ secrets.THIS_PAT }}
-      - name: Set up Python 3.9
+      - name: Set up Python 3.11
         uses: actions/setup-python@v4.0.0
         with:
-          python-version: "3.9.2"
+          python-version: "3.11"
       - uses: actions/setup-go@v3
         with:
-          go-version: '>=1.17.0'
+          go-version: ">=1.17.0"
       - run: go install github.com/rhysd/actionlint/cmd/actionlint@latest
       - uses: actions/checkout@v3
         with:
