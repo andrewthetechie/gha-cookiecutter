@@ -29,6 +29,7 @@ COPY --from=python-base /etc/ld.so.cache /etc/ld.so.cache
 # required by lots of packages - e.g. six, numpy, wsgi
 # *-linux-gnu makes this builder work with either linux/arm64 or linux/amd64
 COPY --from=python-base /lib/*-linux-gnu/libz.so.1 /lib/libs/
+COPY --from=python-base /lib/*-linux-gnu/libcom_err.so.2 /lib/libs/
 COPY --from=python-base /usr/lib/*-linux-gnu/libffi* /lib/libs/
 COPY --from=python-base /lib/*-linux-gnu/libexpat* /lib/libs/
 
