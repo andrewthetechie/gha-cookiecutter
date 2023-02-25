@@ -36,6 +36,11 @@ FROM gcr.io/distroless/cc-debian11
 COPY --from=builder /app/dist/cookiecutter-static /cookiecutter
 # Copy over our unpacked dpkgs to get git
 COPY --from=builder /dpkg /
+# COPY over some required libraries
+COPY --from=builder /lib/*-linux-gnu/libcom_err.so.2 /lib/libs/
+COPY --from=python-base /usr/lib/*-linux-gnu/libffi* /lib/libs/
+COPY --from=python-base /lib/*-linux-gnu/libexpat* /lib/libs/
+
 
 # Add /lib/libs to our path
 ENV LD_LIBRARY_PATH="/lib/libs:${LD_LIBRARY_PATH}"
