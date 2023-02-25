@@ -51,6 +51,8 @@ COPY --from=builder /lib/*-linux-gnu/libexpat* /lib/libs/
 # Copy over the app
 COPY --from=builder /app/dist/cookiecutter-static /cookiecutter
 COPY --from=builder /dpkg /
+# Setup a tmp directory on scratch, used by the pyinstaller bootstrap
+COPY --from=builder /app/tmp /tmp
 
 # Add /lib/libs to our path
 ENV LD_LIBRARY_PATH="/lib/libs:${LD_LIBRARY_PATH}"
