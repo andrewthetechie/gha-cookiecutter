@@ -55,6 +55,7 @@ COPY --from=builder /dpkg /
 COPY --from=builder /app/tmp /tmp
 
 # Add /lib/libs to our path
-ENV LD_LIBRARY_PATH="/lib/libs:${LD_LIBRARY_PATH}"
+ENV LD_LIBRARY_PATH="/lib/libs:${LD_LIBRARY_PATH}" \
+    PATH=/bin:/usr/bin:$PATH
 
 ENTRYPOINT ["/cookiecutter"]

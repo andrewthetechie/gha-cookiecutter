@@ -8,8 +8,7 @@ help:
 setup-dev:  pyenv-setup install-requirements setup-pre-commit ## Uses pyenv to setup a virtualenv and install requirements
 
 pyenv-setup:
-	pyenv install 3.9.2 || true
-	pyenv virtualenv 3.9.2 gha-cookiecutter
+	pyenv virtualenv 3.11 gha-cookiecutter
 	pyenv local gha-cookiecutter
 
 install-requirements:  ## Pip installs our requirements
@@ -20,7 +19,7 @@ setup-pre-commit:
 	pre-commit install
 
 build: ## build a docker image locally
-	docker build --platform linux/amd64 -t gha-cookiecutter -f Docker/Dockerfile .
+	docker build -t gha-cookiecutter -f Docker/Dockerfile .
 
 generate-inputs: ## Generate a dict of inputs from actions.yml into repo_manager/utils/__init__.py
 	./.github/scripts/replace_inputs.sh
