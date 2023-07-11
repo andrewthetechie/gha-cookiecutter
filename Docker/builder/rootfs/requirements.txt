@@ -1,4 +1,4 @@
-cookiecutter==2.2.0
+cookiecutter==2.2.2
 actions-toolkit==0.1.15
 pygithub==1.59.0
 pyyaml
