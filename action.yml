@@ -39,7 +39,7 @@ outputs:
     description: "Directory the cookiecutter outputted to"
 runs:
   using: "docker"
-  image: "Dockerfile"
+  image: "docker://ghcr.io/andrewthetechie/gha-cookiecutter:v1.3.0" # x-release-please-version
 branding:
   icon: 'layers'
   color: 'blue'
