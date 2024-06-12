@@ -20,11 +20,11 @@ inputs:
     default: "."
     required: false
   overwrite:
-    description: "Overwrite files if they already exist in outputDir if true"
+    description: "Overwrite files if they already exist in outputDir if true. Takes priority over 'skip'"
     required: false
     default: "false"
   skip:
-    description: "Skip files if they already exist in outputDir if true"
+    description: "Skip files if they already exist in outputDir if true. Ignored if 'overwrite' is true"
     required: false
     default: "false"
   zipPassword:
