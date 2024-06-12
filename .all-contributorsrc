@@ -15,6 +15,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "larmitage-bjss",
+      "name": "Laura Armitage",
+      "avatar_url": "https://avatars.githubusercontent.com/u/156074260?v=4",
+      "profile": "https://github.com/larmitage-bjss",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
