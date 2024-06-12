@@ -112,7 +112,8 @@ Thanks go to these wonderful people ([emoji key](https://allcontributors.org/doc
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/andrewthetechie"><img src="https://avatars.githubusercontent.com/u/1377314?v=4?s=100" width="100px;" alt="Andrew"/><br /><sub><b>Andrew</b></sub></a><br /><a href="https://github.com/andrewthetechie/pydantic-aioredis/commits?author=andrewthetechie" title="Code">💻</a> <a href="https://github.com/andrewthetechie/pydantic-aioredis/commits?author=andrewthetechie" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/andrewthetechie"><img src="https://avatars.githubusercontent.com/u/1377314?v=4?s=100" width="100px;" alt="Andrew"/><br /><sub><b>Andrew</b></sub></a><br /><a href="https://github.com/andrewthetechie/gha-cookiecutter/commits?author=andrewthetechie" title="Code">💻</a> <a href="https://github.com/andrewthetechie/gha-cookiecutter/commits?author=andrewthetechie" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/larmitage-bjss"><img src="https://avatars.githubusercontent.com/u/156074260?v=4?s=100" width="100px;" alt="Laura Armitage"/><br /><sub><b>Laura Armitage</b></sub></a><br /><a href="https://github.com/andrewthetechie/gha-cookiecutter/commits?author=larmitage-bjss" title="Code">💻</a> <a href="https://github.com/andrewthetechie/gha-cookiecutter/issues?q=author%3Alarmitage-bjss" title="Bug reports">🐛</a></td>
     </tr>
   </tbody>
 </table>
