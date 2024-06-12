@@ -86,13 +86,11 @@ def main():
     inputs["checkout"] = inputs.pop("templateCheckout")
     inputs["directory"] = inputs.pop("templateDirectory")
     inputs["output_dir"] = inputs.pop("outputDir")
-    inputs["overwrite_if_exists"] = inputs.pop("overwrite")
-    inputs["skip_if_file_exists"] = inputs.pop("skip")
+    inputs["overwrite_if_exists"] = str_to_bool(inputs.pop("overwrite"))
+    inputs["skip_if_file_exists"] = str_to_bool(inputs.pop("skip"))
+    # set skip to false if overwrite is true
     inputs["skip_if_file_exists"] = (
-        str_to_bool(inputs["overwrite_if_exists"]) if inputs["overwrite_if_exists"] is not None else None
-    )
-    inputs["skip_if_file_exists"] = (
-        str_to_bool(inputs["overwrite_if_exists"]) if inputs["overwrite_if_exists"] is not None else None
+        false if inputs["overwrite_if_exists"] else inputs["skip_if_file_exists"]
     )
     inputs["password"] = inputs.pop("zipPassword")
     inputs["accept_hooks"] = inputs.pop("acceptHooks")
