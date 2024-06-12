@@ -73,8 +73,8 @@ jobs:
 | templateCheckout | The branch, tag or commit ID to checkout after clone. | `false` |  |
 | templateDirectory | Relative path to a cookiecutter template in a repository. | `false` |  |
 | outputDir | Where to output the generated project dir into. | `false` | . |
-| overwrite | Overwrite files if they already exist in outputDir if true | `false` | false |
-| skip | Skip files if they already exist in outputDir if true | `false` | false |
+| overwrite | Overwrite files if they already exist in outputDir if true. Takes priority over 'skip' | `false` | false |
+| skip | Skip files if they already exist in outputDir if true. Ignored if 'overwrite' is true | `false` | false |
 | zipPassword | If your template zip is password protected, put your password here | `false` |  |
 | acceptHooks | Accept pre and post hooks if set to true. | `false` | true |
 
