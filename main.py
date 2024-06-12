@@ -24,12 +24,12 @@ INPUTS = {
     },
     "outputDir": {"description": "Where to output the generated project dir into.", "default": ".", "required": False},
     "overwrite": {
-        "description": "Overwrite files if they already exist in outputDir if true",
+        "description": "Overwrite files if they already exist in outputDir if true. Takes priority over 'skip'",
         "required": False,
         "default": "false",
     },
     "skip": {
-        "description": "Skip files if they already exist in outputDir if true",
+        "description": "Skip files if they already exist in outputDir if true. Ignored if 'overwrite' is true",
         "required": False,
         "default": "false",
     },
@@ -89,9 +89,7 @@ def main():
     inputs["overwrite_if_exists"] = str_to_bool(inputs.pop("overwrite"))
     inputs["skip_if_file_exists"] = str_to_bool(inputs.pop("skip"))
     # set skip to false if overwrite is true
-    inputs["skip_if_file_exists"] = (
-        false if inputs["overwrite_if_exists"] else inputs["skip_if_file_exists"]
-    )
+    inputs["skip_if_file_exists"] = False if inputs["overwrite_if_exists"] else inputs["skip_if_file_exists"]
     inputs["password"] = inputs.pop("zipPassword")
     inputs["accept_hooks"] = inputs.pop("acceptHooks")
 
