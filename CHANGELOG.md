@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.2](https://github.com/andrewthetechie/gha-cookiecutter/compare/v1.3.1...v1.3.2) (2024-06-12)
+
+
+### Bug Fixes
+
+* linting ([7c0791a](https://github.com/andrewthetechie/gha-cookiecutter/commit/7c0791a7f4f7d69023c45d1e8ba24dcee1f1592e))
+
+
+### Documentation
+
+* add larmitage-bjss as a contributor for code, and bug ([#38](https://github.com/andrewthetechie/gha-cookiecutter/issues/38)) ([c2c288d](https://github.com/andrewthetechie/gha-cookiecutter/commit/c2c288d468f98031c17c63878a7a52e38878fe8d))
+* automated doc update ([9475363](https://github.com/andrewthetechie/gha-cookiecutter/commit/94753636ed8fb2bb49fc4d10f352f5590e009376))
+
 ## [1.3.1](https://github.com/andrewthetechie/gha-cookiecutter/compare/v1.3.0...v1.3.1) (2024-01-19)
 
 
